@@ -1,0 +1,8 @@
+deploy:
+  provider: s3
+  access_key_id: AKIAJNU5NPF23GKIWVRQ
+  secret_access_key: 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
+  bucket: "review-viewer-bucket"
+  skip_cleanup: true
+  on:
+    branch: master
