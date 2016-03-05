@@ -8,5 +8,6 @@ deploy:
   secret_access_key: UqKaaH0TjXoSOWN7I7kWioic3Ik2bOe3u1imkRaC
   bucket: "review-viewer-bucket"
   skip_cleanup: true
+  region: ap-northeast-2
   on:
     branch: master
