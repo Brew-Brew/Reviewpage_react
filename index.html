@@ -2,61 +2,66 @@
 <!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
 <html lang="en-us">
 
-	<head>
-		<meta charset="utf-8">
-		<title>리뷰 보기</title>
-		<link href="lib/bootstrap.min.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <title>리뷰 보기</title>
+    <link href="lib/bootstrap.min.css" rel="stylesheet">
+    <script src="lib/jquery-2.2.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/es6-promise.min.js"></script>
+    <script src="lib/promise.min.js"></script>
+    <script src="lib/fetch.js"></script>
+    <style type="text/css">
 
-		<script src="lib/jquery-2.2.1.min.js"></script>
-		<script src="lib/bootstrap.min.js"></script>
-		<script src="lib/es6-promise.min.js"></script>
-		<script src="lib/promise.min.js"></script>
-		<script src="lib/fetch.js"></script>
+    </style>
+</head>
 
-		<style type="text/css">
+<body>
+    <div id="main">
+    </div>
+    <script>
+    /* global fetch */
+    'use strict';
+    const MenuNameDictionary = {
+        13: '연어',
+        14: '까넬',
+        18: '트러플',
+        19: '수비드 닭',
+        20: '매운갈비',
+        21: '함박',
+        22: '노리츠쿠다니'
+    };
 
-		</style>
-	</head>
+    let reviews = [];
 
-	<body>
-		<div id="main">
-		</div>
-		<script>
-			/* global fetch */
-			'use strict';
-			const MenuNameDictionary = {
-				13: '연어',
-				14: '까넬',
-				18: '트러플',
-				19: '수비드 닭',
-				20: '매운갈비',
-				21: '함박',
-				22: '노리츠쿠다니'
-			};
+    const menuNameByMenuIdx = (idx) => {
+        if (MenuNameDictionary.hasOwnProperty(idx)) {
+            return MenuNameDictionary[idx];
+        }
+        return idx;
+    };
 
-			let reviews = [];
+    for (let menuIdx in MenuNameDictionary) {
+        const headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Origin', 'http://api.plating.co.kr');
+        headers.append('Origin', 'http://api.plating.co.kr');
+        fetch('http://api.plating.co.kr/review/view_more?menu_idx=' + menuIdx, {
+                method: 'get',
+                headers: headers,
+                credentials: 'no-cors'
 
-			const menuNameByMenuIdx = (idx) => {
-				if (MenuNameDictionary.hasOwnProperty(idx)) {
-					return MenuNameDictionary[idx];
-				}
-				return idx;
-			};
-
-			for (let menuIdx in MenuNameDictionary) {
-				fetch('http://api.plating.co.kr/review/view_more?menu_idx=' + menuIdx, {
-						credentials: 'include'
-					})
-					.then(function (response) {
-						return response.json();
-					}).then(function (json) {
-						console.log('parsed json', json);
-					}).catch(function (ex) {
-						console.log('parsing failed', ex);
-					});
-			}
-		</script>
-
-	</body>
+            })
+            .then(function(response) {
+                return response.json();
+            }).then(function(json) {
+                console.log('parsed json', json);
+            }).catch(function(ex) {
+                console.log('parsing failed', ex);
+            });
+    }
+    </script>
+</body>
 
 </html>
