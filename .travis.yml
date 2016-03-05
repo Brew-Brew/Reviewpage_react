@@ -5,4 +5,4 @@ deploy:
   bucket: "review-viewer-bucket"
   skip_cleanup: true
   on:
-    branch: master
+    branch: master 
