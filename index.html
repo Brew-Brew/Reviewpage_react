@@ -22,7 +22,7 @@
 		<div id="main">
 		</div>
 		<script>
-		/* global fetch */
+			/* global fetch */
 			'use strict';
 			const MenuNameDictionary = {
 				13: '연어',
@@ -44,14 +44,16 @@
 			};
 
 			for (let menuIdx in MenuNameDictionary) {
-				fetch('http://api.plating.co.kr/review/view_more?menu_idx=' + menuIdx)
-					.then(function (response) {
-						return response.json()
-					}).then(function (json) {
-						console.log('parsed json', json)
-					}).catch(function (ex) {
-						console.log('parsing failed', ex)
+				fetch('http://api.plating.co.kr/review/view_more?menu_idx=' + menuIdx, {
+						credentials: 'include'
 					})
+					.then(function (response) {
+						return response.json();
+					}).then(function (json) {
+						console.log('parsed json', json);
+					}).catch(function (ex) {
+						console.log('parsing failed', ex);
+					});
 			}
 		</script>
 
