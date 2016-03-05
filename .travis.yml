@@ -1,3 +1,7 @@
+language: node_js
+node_js:
+  - "4.1"
+  
 deploy:
   provider: s3
   access_key_id: AKIAJNU5NPF23GKIWVRQ
@@ -5,4 +9,4 @@ deploy:
   bucket: "review-viewer-bucket"
   skip_cleanup: true
   on:
-    branch: master 
+    branch: master
