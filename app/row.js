@@ -27,7 +27,7 @@ export default class Row extends React.Component {
         const orderIndex = data.idx;
         const menuName = this.menuName(data.menuIdx);
         const rating = data.rating;
-        const ratingTime = moment(data.ratedTime).add(9, 'h').format('M월D일HH시');
+        const ratingTime = moment(data.ratedTime).format('M월D일HH시');
         const requestTime = moment(data.requestTime).add(9, 'h').format('M월D일');
         const comment = data.comment;
         return (
