@@ -17,7 +17,8 @@ export default class Row extends React.Component {
             21: '함박',
             22: '노리츠쿠',
             20003: '그라브락스',
-            20004: '시즌샐러드'
+            20004: '샐러드단품',
+            20005: '샐러드세트'
         };
         return MenuNameDictionary[menuIdx];
     }
