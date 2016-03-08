@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo pass test",
-    "start": "PORT=2626 node index.js"
+    "start": "PORT=2626 forever start index.js"
   },
   "repository": {
     "type": "git",
