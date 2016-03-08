@@ -35,7 +35,8 @@ class Index extends React.Component {
         return (
             <div>
                 <Table rowData={this.state.reviewData} />
-                <button onClick={this.fetchReview.bind(this)}>다음 리뷰</button>
+                <button className="button" onClick={this.fetchReview.bind(this)}>다음 리뷰</button>
+                <div className="padding" />
             </div>
         );
     }
