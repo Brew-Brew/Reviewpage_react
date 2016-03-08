@@ -16,7 +16,8 @@ export default class Row extends React.Component {
             20: '매운갈비',
             21: '함박',
             22: '노리츠쿠',
-            20003: '그라브락스'
+            20003: '그라브락스',
+            20004: '시즌샐러드'
         };
         return MenuNameDictionary[menuIdx];
     }
@@ -26,8 +27,8 @@ export default class Row extends React.Component {
         const orderIndex = data.idx;
         const menuName = this.menuName(data.menuIdx);
         const rating = data.rating;
-        const ratingTime = Moment(data.ratedTime).format('M월D일HH시');
-        const requestTime = Moment(data.requestTime).format('M월D일HH시');
+        const ratingTime = Moment(data.ratedTime).Add(9, 'h').format('M월D일HH시');
+        const requestTime = Moment(data.requestTime).Add(9, 'h').format('M월D일HH시');
         const comment = data.comment;
         return (
             <div className="border">
