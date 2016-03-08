@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 
 export default class Row extends React.Component {
     constructor(props) {
@@ -27,8 +27,8 @@ export default class Row extends React.Component {
         const orderIndex = data.idx;
         const menuName = this.menuName(data.menuIdx);
         const rating = data.rating;
-        const ratingTime = Moment(data.ratedTime).Add(9, 'h').format('M월D일HH시');
-        const requestTime = Moment(data.requestTime).Add(9, 'h').format('M월D일HH시');
+        const ratingTime = moment(data.ratedTime).add(9, 'h').format('M월D일HH시');
+        const requestTime = moment(data.requestTime).add(9, 'h').format('M월D일');
         const comment = data.comment;
         return (
             <div className="border">
@@ -37,7 +37,7 @@ export default class Row extends React.Component {
                     <div className="col-xs-3 center">메뉴</div>
                     <div className="col-xs-2 center">점수</div>
                     <div className="col-xs-3 center">리뷰시각</div>
-                    <div className="col-xs-3 center">배달시각</div>
+                    <div className="col-xs-3 center">드신 날</div>
                 
                     <div className="col-xs-1 center">{orderIndex}</div>
                     <div className="col-xs-3 center">{menuName}</div>
