@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Page from './containers/Page';
+import Page from './containers/page';
 import configureStore from './configureStore'
 import reviews from './reducers';
 
