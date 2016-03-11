@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import moment from 'moment';
+import MenuNameDictionary from '../menuNameDictionary';
 
 export default class Row extends React.Component {
     constructor(props) {
@@ -8,18 +9,6 @@ export default class Row extends React.Component {
     }
 
     menuName(menuIdx) {
-        const MenuNameDictionary = {
-            13: '연어',
-            14: '까넬',
-            18: '트러플',
-            19: '수비드 닭',
-            20: '매운갈비',
-            21: '함박',
-            22: '노리츠쿠',
-            20003: '그라브락스',
-            20004: '샐러드단품',
-            20005: '샐러드세트'
-        };
         return MenuNameDictionary[menuIdx];
     }
 

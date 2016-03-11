@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // ?index=0~
 router.get('/review', (req, res) => {
-    fetch('http://api.plating.co.kr/review/reviewList?page=' + req.query.index, {
+    fetch(`http://api.plating.co.kr/review/reviewList?page=${req.query.index}&menuIdx=${req.query.menuIdx}`, {
         // : //
     }).then(response =>
         response.json()

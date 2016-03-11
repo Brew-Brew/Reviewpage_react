@@ -12,17 +12,17 @@ var path = {
     ENTRY_POINT: 'app/index.js'
 };
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
 
     var props = {
         entries: [path.ENTRY_POINT],
         debug: true,
         fullPaths: true
     };
-    var watcher = watchify(browserify(props).transform(babelify, {presets: ["es2015", "react"]}));
+    var watcher = watchify(browserify(props).transform(babelify, { presets: ["es2015", "react"] }));
 
 
-    return watcher.on('update', function () {
+    return watcher.on('update', function() {
             watcher.bundle()
                 .pipe(source(path.OUT))
                 .pipe(gulp.dest(path.DEST));
@@ -33,10 +33,21 @@ gulp.task('watch', function () {
         .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('build', function () {
+gulp.task('build', function() {
     browserify({
             entries: [path.ENTRY_POINT]
-        }).transform(babelify, {presets: ["es2015", "react"]})
+        }).transform(babelify, { presets: ["es2015", "react"] })
+        .bundle()
+        .pipe(source(path.OUT))
+        .pipe(gulp.dest(path.DEST));
+});
+
+gulp.task('debug', function() {
+    browserify({
+            entries: [path.ENTRY_POINT],
+            debug: true,
+            fullPaths: true
+        }).transform(babelify, { presets: ["es2015", "react"] })
         .bundle()
         .pipe(source(path.OUT))
         .pipe(gulp.dest(path.DEST));
