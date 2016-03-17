@@ -1,7 +1,7 @@
 'use strict';
 import React, { PropTypes } from 'react';
 import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchNextReviewPage, switchMenu } from '../actions';
 import Table from '../components/table';
 import Search from '../components/search';
@@ -17,7 +17,7 @@ class Page extends React.Component {
     }
 
     componentDidMount() {
-    	const { dispatch, selectedReddit } = this.props;
+    	const { dispatch } = this.props;
         dispatch(fetchNextReviewPage());
     }
     render() {
