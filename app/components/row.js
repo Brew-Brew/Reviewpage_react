@@ -20,6 +20,8 @@ export default class Row extends React.Component {
         const ratingTime = moment(data.ratedTime).format('M월D일HH시');
         const requestTime = moment(data.requestTime).add(9, 'h').format('M월D일');
         const comment = data.comment;
+        const name = data.name;
+        const phoneNumber = data.phoneNumber;
         return (
             <div className="border">
                 <div className="row">
@@ -28,16 +30,19 @@ export default class Row extends React.Component {
                     <div className="col-xs-2 center">점수</div>
                     <div className="col-xs-3 center">리뷰시각</div>
                     <div className="col-xs-3 center">드신 날</div>
-                
+
                     <div className="col-xs-1 center">{orderIndex}</div>
                     <div className="col-xs-3 center">{menuName}</div>
                     <div className="col-xs-2 center">{rating}점</div>
                     <div className="col-xs-3 center">{ratingTime}</div>
                     <div className="col-xs-3 center">{requestTime}</div>
-                    
+
+                    <div className="col-xs-6 center">{name}</div>
+                    <div className="col-xs-6 center">{phoneNumber}</div>
+
                 </div>
                 <div className="padding" />
-                
+
                 <div className="row">
                     <div className="col-xs-12">{comment}</div>
                 </div>
