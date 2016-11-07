@@ -35,6 +35,7 @@ const MenuNameDictionary = {
     45: '삼천포',
     46: '푸팟퐁',
     47: '부채살',
+    48: '카프레제',
     10000: '에비앙',
     10002: '산펠 자몽',
     10003: '페리에',
@@ -47,6 +48,7 @@ const MenuNameDictionary = {
     20008: '피낭시에',
     20009: '리코타',
     20010: '티라미슈',
+    808080: '배달',
 };
 
 module.exports = MenuNameDictionary;
