@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo pass test",
-    "start": "PORT=2626 forever start index.js"
+    "start": "gulp production && PORT=5000 pm2 start index.js --name REVIEW",
+    "stop": "pm2 stop REVIEW"
   },
   "repository": {
     "type": "git",
