@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo pass test",
     "start": "gulp production && PORT=5000 pm2 start index.js --name REVIEW",
+    "reload": "gulp production && PORT=5000 pm2 reload REVIEW",
     "stop": "pm2 stop REVIEW"
   },
   "repository": {
