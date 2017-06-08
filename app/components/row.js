@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
 import moment from 'moment';
-import MenuNameDictionary from '../menuNameDictionary';
+// import MenuNameDictionary from '../menuNameDictionary';
 
 export default class Row extends React.Component {
     constructor(props) {
@@ -9,7 +9,8 @@ export default class Row extends React.Component {
     }
 
     menuName(menuIdx) {
-        return MenuNameDictionary[menuIdx];
+        // return MenuNameDictionary[menuIdx];
+        return this.props.menuNames[menuIdx];
     }
 
     render() {

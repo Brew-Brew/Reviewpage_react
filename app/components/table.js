@@ -11,7 +11,7 @@ export default class Table extends React.Component {
         let rows = [];
         if (this.props.rowData) {
             this.props.rowData.forEach((singleRowData, index) => {
-                rows.push(<Row key={index} data={singleRowData} />);
+                rows.push(<Row key={index} data={singleRowData} menuNames={this.props.menuNames}/>);
                 rows.push(<div className="padding" />);
             });
         }

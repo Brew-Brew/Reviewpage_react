@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { createStore } from 'redux';
 import { connect } from 'react-redux';
-import { fetchNextReviewPage, switchMenu } from '../actions';
+import { fetchNextReviewPage, switchMenu, fetchMenuNames } from '../actions';
 import Table from '../components/table';
 import Search from '../components/search';
 
@@ -19,7 +19,9 @@ class Page extends React.Component {
     componentDidMount() {
     	const { dispatch } = this.props;
         dispatch(fetchNextReviewPage());
+        dispatch(fetchMenuNames());
     }
+
     render() {
         const {
             reviews,
@@ -27,10 +29,11 @@ class Page extends React.Component {
         } = this.props;
         return (
             <div>
-                <Search selectMenu={
-                    menuIdx => dispatch(switchMenu(menuIdx))
-                }/>
-                <Table rowData={reviews} />
+                <Search
+                  selectMenu={menuIdx => dispatch(switchMenu(menuIdx))}
+                  menuNames={this.props.menuNames}
+                />
+                <Table rowData={reviews} menuNames={this.props.menuNames} />
                 <button className="button" onClick={()=>dispatch(fetchNextReviewPage())}>다음 리뷰</button>
                 <div className="padding" />
             </div>
@@ -40,7 +43,8 @@ class Page extends React.Component {
 
 function select(state){
     return {
-        reviews: state.reviews
+        reviews: state.reviews,
+        menuNames: state.menuNames,
     };
 }
 export default connect(select)(Page);

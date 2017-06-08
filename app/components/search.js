@@ -2,7 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
-import MenuNameDictionary from '../menuNameDictionary';
+// import MenuNameDictionary from '../menuNameDictionary';
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -14,15 +14,18 @@ export default class Search extends React.Component {
 
     _onSelect(event, eventKey) {
         this.setState({
-            title: MenuNameDictionary[eventKey]
+            // title: MenuNameDictionary[eventKey]
+            title: this.props.menuNames[eventKey],
         });
         this.props.selectMenu(eventKey);
     }
 
     render() {
         let selectMenuRow = [];
-        for(var i in MenuNameDictionary) {
-            selectMenuRow.push(<MenuItem key={i} eventKey={i}>{MenuNameDictionary[i]}</MenuItem>);
+        // for(var i in MenuNameDictionary) {
+        for(var i in this.props.menuNames) {
+            // selectMenuRow.push(<MenuItem key={i} eventKey={i}>{MenuNameDictionary[i]}</MenuItem>);
+            selectMenuRow.push(<MenuItem key={i} eventKey={i}>{this.props.menuNames[i]}</MenuItem>);
         }
         return (
             <DropdownButton title={this.state.title} id="dropdown-size-medium" onSelect={this._onSelect.bind(this)}>
