@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import moment from 'moment';
+moment.locale('ko');
 // import MenuNameDictionary from '../menuNameDictionary';
 
 export default class Row extends React.Component {
@@ -18,8 +19,8 @@ export default class Row extends React.Component {
         const orderIndex = data.idx;
         const menuName = this.menuName(data.menuIdx);
         const rating = data.rating;
-        const ratingTime = moment(data.ratedTime).format('M월D일HH시');
-        const requestTime = moment(data.requestTime).add(9, 'h').format('M월D일');
+        const ratingTime = moment(data.ratedTime).add(9, 'hours').format('YYYY년 MM월 DD일 HH:mm');
+        const requestTime = moment(data.requestTime).add(9, 'hours').format('YYYY년 MM월 DD일 HH:mm');
         const comment = data.comment;
         const name = data.name;
         const phoneNumber = data.phoneNumber;
@@ -29,8 +30,8 @@ export default class Row extends React.Component {
                     <div className="col-xs-1 center"></div>
                     <div className="col-xs-3 center">메뉴</div>
                     <div className="col-xs-2 center">점수</div>
-                    <div className="col-xs-3 center">리뷰시각</div>
-                    <div className="col-xs-3 center">드신 날</div>
+                    <div className="col-xs-3 center">리뷰 시간</div>
+                    <div className="col-xs-3 center">주문 시간</div>
 
                     <div className="col-xs-1 center">{orderIndex}</div>
                     <div className="col-xs-3 center">{menuName}</div>
