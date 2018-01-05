@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 
 import { selectMenu,receiveReviews, selectReviews} from './actions';
-import Search from './components/Search';
+
 
 const menuTypes = ['MAIN', 'DRINK', 'SIDE'];
 
