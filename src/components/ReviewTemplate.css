@@ -23,3 +23,15 @@
 .review-wrapper {
   min-height: 5rem;
 }
+.next-button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
+  margin-left: 5rem;
+  background: #ef8e2b;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}

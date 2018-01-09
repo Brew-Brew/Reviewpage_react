@@ -15,6 +15,7 @@ const ReviewTemplate = ({header, select, children}) => {
       </section>
       <section className="review-wrapper">
         { children }
+
       </section>
     </main>
   );

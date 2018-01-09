@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 
-import { selectMenu,receiveReviews, selectReviews} from './actions';
+import { selectMenu,receiveReviews, selectReviews,fetchMenus,fetchReviews,fetchNextReviewPage} from './actions';
 
 
 const menuTypes = ['MAIN', 'DRINK', 'SIDE'];
@@ -17,29 +17,31 @@ class App extends React.Component {
       super(props);
       this.state = {
           menuType: '',
-          menuDetail: ''};
+          menuId: ''};
   }
 
   componentDidMount() {
-  const { reviews } = this.props;
+
 }
 
   handleType = (menuType) => {
-    this.props.selectMenu(menuType);
-    this.props.receiveReviews(menuType);
+    this.props.selectMenu(menuType);//버튼으로 눌러서 타입 선택
+    this.props.fetchMenus(menuType);
+    //this.props.receiveReviews(menuType);//그 타입에 맞는 리뷰들 받아옴
   }
 
-  handleChange = (menuDetail) => {
-
-    this.props.selectReviews(menuDetail.target.value);
+  handleChange = (menuId) => {
+    console.log(menuId.target.value);
+    //this.props.fetchPosts(menuId.target.value);
+    this.props.fetchReviews(menuId.target.value);//음식에 맞는 리뷰 가져옴
   }
 
   render() {
     console.log(this.props);
     const {
-      reviews,menuNames,Type,dispatch
+      reviews, menuNames, Type, dispatch
     } = this.props;
-    const { menuType, menuDetail} = this.state;
+    const { menuType, menuId} = this.state;
     const {
       handleType,
       handleChange
@@ -49,29 +51,35 @@ class App extends React.Component {
       <ReviewTemplate header={
           <ReviewHeader
             menuNames={menuNames}
-            menuDetail={menuDetail}
+            menuId={menuId}
             menuTypes={menuTypes}
             menuType={Type}
             onClick={handleType}
             handleChange={handleChange}/>}
       >
         <ReviewList reviews={reviews}/>
+        <button className="next-button" onClick={()=>dispatch(fetchNextReviewPage())}>다음 리뷰 보기</button>
       </ReviewTemplate>
+
     );
   }
 }
 function select(state){
     return {
-        reviews: state.detailData,
+        reviews: state.reviewData,
         menuNames: state.menuNames,
         Type: state.menuType
     };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
+    // dispatch: dispatch,
     selectMenu: menuType => dispatch(selectMenu(menuType)),
     receiveReviews: menuType => dispatch(receiveReviews(menuType)),
-    selectReviews: menuDetail => dispatch(selectReviews(menuDetail))
+    selectReviews: menuId => dispatch(selectReviews(menuId)),
+    fetchMenus: menuType => dispatch(fetchMenus(menuType)),
+    fetchReviews: menuId => dispatch(fetchReviews(menuId)),
+    fetchNextReviewPage: () =>dispatch(fetchNextReviewPage())
   };
 }
 export default connect(select,mapDispatchToProps)(App);

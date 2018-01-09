@@ -2,29 +2,28 @@ import React from 'react';
 import './ReviewHeader.css';
 
 
-const ReviewHeader = ({menuType, menuNames,menuDetail, onClick, handleChange}) => {
+const ReviewHeader = ({menuType, menuNames,menuId, onClick, handleChange}) => {
 
-  // console.log(menus);
+  // console.log('test'+menuId);
   // {menuNames}.forEach((menus)=>{
   //   <option value= {menus.menu}>{menus.menu}</option>
   // })
 
   return (
     <div className="menu">
-      <button className="menu-button" onClick={() => onClick('main')}>MAIN</button>
-      <button className="menu-button" onClick={() => onClick('side')}>SIDE</button>
-      <button className="menu-button" onClick={() => onClick('drink')}>DRINK</button>
+      <button className="menu-button" onClick={() => onClick('MAIN')}>MAIN</button>
+      <button className="menu-button" onClick={() => onClick('SIDE')}>SIDE</button>
+      <button className="menu-button" onClick={() => onClick('DRINK')}>DRINK</button>
       <br/>
 
       <h3>{menuType}타입의 리뷰입니다.</h3>
       <select className="menu-detail" onChange={handleChange}>
-        {menuNames.filter((menu)=>{
-          return menu.menuType === menuType;
-        }).map((menu)=>{
-          return <option value={menu.menu}>{menu.menu}</option>;
+        {menuNames.map((menuId)=>{
+          //console.log('test'+menuId.id);
+          return <option value={menuId.id}>{menuId.shortName}</option>;
         })}
       </select>
-      <h3>{menuDetail}</h3>
+      <h3>{menuNames.shortName}</h3>
     </div>
 
 

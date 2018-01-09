@@ -6,13 +6,11 @@ class ReviewList extends Component {
     const { reviews } = this.props;
 
     const reviewList = reviews.map(
-      ({menu, score, reviewTime,orderTime,review}) => (
+      ({comment,rating,ratedTime}) => (
         <ReviewItem
-          menu={menu}
-          score={score}
-          reviewTime={reviewTime}
-          orderTime={orderTime}
-          review={review}
+          comment={comment}
+          rating={rating}
+          ratedTime={ratedTime}
         />
       )
     );
