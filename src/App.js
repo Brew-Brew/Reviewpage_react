@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
+          menuName: '',
           menuType: '',
           menuId: ''};
   }
@@ -31,7 +32,7 @@ class App extends React.Component {
   }
 
   handleChange = (menuId) => {
-
+    this.state.menuName = menuId.shortName;
     //this.props.fetchPosts(menuId.target.value);
     this.props.fetchReviews(menuId.target.value);//음식에 맞는 리뷰 가져옴
   }
@@ -41,7 +42,7 @@ class App extends React.Component {
     const {
       reviews, menuNames, Type, dispatch
     } = this.props;
-    const { menuType, menuId} = this.state;
+    const { menuType, menuId,menuName} = this.state;
     const {
       handleType,
       handleChange
@@ -50,6 +51,7 @@ class App extends React.Component {
     return (
       <ReviewTemplate header={
           <ReviewHeader
+            menuName={menuName}
             menuNames={menuNames}
             menuId={menuId}
             menuTypes={menuTypes}

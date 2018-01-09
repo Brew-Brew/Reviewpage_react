@@ -11,7 +11,8 @@ export const Actions = {
     NEXT_REVIEWS: "NEXT_REVIEWS",
     SELECT_REVIEWS: "SELECT_REVIEWS",
     REQUEST_POSTS: "REQUEST_POSTS",
-    RECEIVE_MENUS: "RECEIVE_MENUS"
+    RECEIVE_MENUS: "RECEIVE_MENUS",
+    ADD_PAGES: "ADD_PAGES"
 }
 
 
@@ -33,6 +34,14 @@ export function receiveReviews(reviews) {
     	reviews
     };
 }
+
+export function receiveMenus(menus) {
+    return {
+    	type:Actions.RECEIVE_MENUS,
+    	menus
+    };
+}
+
 export function selectReviews(menuId) {
     return {
         type: Actions.SELECT_REVIEWS,
@@ -45,39 +54,35 @@ export function nextReviews(reviews) {
     	reviews
     };
 }
+export function addPage(pagenum) {
+    return {
+    	type:Actions.ADD_PAGES,
+    	pagenum
+    };
+}
 export function fetchReviews(menuId) {
 
   return dispatch => {
-    service.getReviews(menuId).then(function(review){
+    service.getReviews(menuId,0).then(function(review){
       dispatch(receiveReviews(review.data.result));
-    //  dispatch(receivePosts(review.data.result));
     })
   };
 }
 export function fetchMenus(menuType) {
   return dispatch => {
-    service.getMenus(menuType,0).then(function(review){
-      //console.log(review.data.result);
+    service.getMenus(menuType).then(function(review){
       dispatch(receiveMenus(review.data.result));
-    //  dispatch(receivePosts(review.data.result));
     })
   };
 }
-export function receiveMenus(menus) {
-    return {
-    	type:Actions.RECEIVE_MENUS,
-    	menus
-    };
-}
+
 export function fetchNextReviewPage() {
   return (dispatch, getState) => {
-      var {reviewPage,menuType}= getState();
-      reviewPage*=5;
-      console.log(reviewPage);
-      service.getReviews(menuType,reviewPage).then(function(review){
+      var {reviewPage,menuId}= getState();
+      dispatch(addPage(reviewPage));
+      service.getReviews(menuId,reviewPage).then(function(review){
         dispatch(nextReviews(review.data.result));
-      //  dispatch(receivePosts(review.data.result));
       })
-      //dispatch(nextReviews(reviewData));
+
   }
 }

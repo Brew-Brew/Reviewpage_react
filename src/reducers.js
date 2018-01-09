@@ -5,7 +5,8 @@ const {
     SELECT_MENU,
     RECEIVE_REVIEWS,
     NEXT_REVIEWS,
-    RECEIVE_MENUS
+    RECEIVE_MENUS,
+    ADD_PAGES
 } = Actions;
 
 const reviews = (state = {
@@ -15,20 +16,22 @@ const reviews = (state = {
   menuId: '',
   startDate: '',
   endDate: '',
+  menuName: '',
   menuNames :[],
-  reviewData: [],
-  viewData: [],
-  detailData: [],
+  reviewData: []
 }, action) => {
     switch (action.type) {
         case RECEIVE_MENUS:
           return Object.assign({}, state, { menuNames: action.menus});
+        case ADD_PAGES:
+            return Object.assign({}, state, { reviewPage: action.pagenum+5});
         case SELECT_MENU:
             return Object.assign({}, state, { menuType: action.menuType,reviewData: []});
         case RECEIVE_REVIEWS:
-            return Object.assign({}, state, { menuType: state.menuType, menuNames: state.menuNames, reviewData: action.reviews});
+            return Object.assign({}, state, { menuType: state.menuType, menuNames: state.menuNames, reviewData: action.reviews, menuId: action.reviews[0].menuId});
         case NEXT_REVIEWS:
-          return Object.assign({}, state, { menuType: state.menuType, menuNames: state.menuNames, reviewData: [...state.reviewData, ...action.reviews]});
+            console.log(state.reviewData,action.reviews);
+            return Object.assign({}, state, { menuType: state.menuType, menuNames: state.menuNames, reviewData: [...state.reviewData, ...action.reviews]});
         default:
             return state;
     }

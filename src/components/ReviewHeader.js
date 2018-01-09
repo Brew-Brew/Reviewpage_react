@@ -2,7 +2,7 @@ import React from 'react';
 import './ReviewHeader.css';
 
 
-const ReviewHeader = ({menuType, menuNames,menuId, onClick, handleChange}) => {
+const ReviewHeader = ({menuName,menuType, menuNames,menuId, onClick, handleChange}) => {
 
   // console.log('test'+menuId);
   // {menuNames}.forEach((menus)=>{
@@ -23,7 +23,7 @@ const ReviewHeader = ({menuType, menuNames,menuId, onClick, handleChange}) => {
           return <option value={menuId.id}>{menuId.shortName}</option>;
         })}
       </select>
-      <h3>{menuNames.shortName}</h3>
+      <h3>{menuName}</h3>
     </div>
 
 
