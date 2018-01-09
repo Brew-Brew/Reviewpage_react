@@ -1,18 +1,16 @@
 import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
-import thunkMiddleware from 'redux-thunk';
-import {createLogger} from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
 import reviews from './reducers';
-import { Provider } from 'react-redux';
-import { selectMenu,receiveReviews } from './actions';
-
-
+import { selectMenu, receiveReviews } from './actions';
 
 const loggerMiddleware = createLogger();
-
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware, // 함수를 dispatch() 하게 해줍니다
@@ -23,6 +21,7 @@ const store = createStoreWithMiddleware(reviews);
 console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
-  <App />
+    <App />
   </Provider>,
-document.getElementById('root'));
+  document.getElementById('root')
+);
