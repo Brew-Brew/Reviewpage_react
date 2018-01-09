@@ -31,13 +31,13 @@ class App extends React.Component {
   }
 
   handleChange = (menuId) => {
-    console.log(menuId.target.value);
+
     //this.props.fetchPosts(menuId.target.value);
     this.props.fetchReviews(menuId.target.value);//음식에 맞는 리뷰 가져옴
   }
 
   render() {
-    console.log(this.props);
+
     const {
       reviews, menuNames, Type, dispatch
     } = this.props;
@@ -58,7 +58,7 @@ class App extends React.Component {
             handleChange={handleChange}/>}
       >
         <ReviewList reviews={reviews}/>
-        <button className="next-button" onClick={()=>dispatch(fetchNextReviewPage())}>다음 리뷰 보기</button>
+        <button className="next-button" onClick={() => this.props.fetchNextReviewPage()}>다음 리뷰 보기</button>
       </ReviewTemplate>
 
     );
@@ -79,7 +79,7 @@ const mapDispatchToProps = (dispatch) => {
     selectReviews: menuId => dispatch(selectReviews(menuId)),
     fetchMenus: menuType => dispatch(fetchMenus(menuType)),
     fetchReviews: menuId => dispatch(fetchReviews(menuId)),
-    fetchNextReviewPage: () =>dispatch(fetchNextReviewPage())
+    fetchNextReviewPage: () => dispatch(fetchNextReviewPage())
   };
 }
 export default connect(select,mapDispatchToProps)(App);

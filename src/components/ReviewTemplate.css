@@ -24,11 +24,12 @@
   min-height: 5rem;
 }
 .next-button {
+  margin-top: 1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 15rem;
   padding-right: 15rem;
-  margin-left: 5rem;
+  margin-left: 10rem;
   background: #ef8e2b;
   border-radius: 3px;
   color: white;
