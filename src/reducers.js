@@ -12,7 +12,6 @@ const {
 const reviews = (
   state = {
     reviewPage: 0,
-    menuIdx: 0,
     menuType: 'MAIN',
     menuId: '',
     startDate: '',
@@ -27,7 +26,9 @@ const reviews = (
     case RECEIVE_MENUS:
       return Object.assign({}, state, { menuNames: action.menus });
     case ADD_PAGES:
-      return Object.assign({}, state, { reviewPage: action.pagenum + 5 });
+      return Object.assign({}, state, {
+        reviewPage: action.pagenum + action.limit,
+      });
     case SELECT_MENU:
       return Object.assign({}, state, {
         menuType: action.menuType,

@@ -14,8 +14,6 @@ import {
   fetchNextReviewPage,
 } from './actions';
 
-const menuTypes = ['MAIN', 'DRINK', 'SIDE'];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,8 +26,6 @@ class App extends React.Component {
     this.handleType = this.handleType.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
-  componentDidMount() {}
 
   handleType(menuType) {
     this.props.selectMenu(menuType); // 버튼으로 눌러서 타입 선택
@@ -55,7 +51,6 @@ class App extends React.Component {
             menuName={menuName}
             menuNames={menuNames}
             menuId={menuId}
-            menuTypes={menuTypes}
             menuType={Type}
             onClick={handleType}
             handleChange={handleChange}
@@ -73,6 +68,7 @@ class App extends React.Component {
     );
   }
 }
+
 function select(state) {
   return {
     reviews: state.reviewData,
@@ -80,13 +76,13 @@ function select(state) {
     Type: state.menuType,
   };
 }
-const mapDispatchToProps = dispatch => ({
+
+export default connect(select, {
   // dispatch: dispatch,
-  selectMenu: menuType => dispatch(selectMenu(menuType)),
-  receiveReviews: menuType => dispatch(receiveReviews(menuType)),
-  selectReviews: menuId => dispatch(selectReviews(menuId)),
-  fetchMenus: menuType => dispatch(fetchMenus(menuType)),
-  fetchReviews: menuId => dispatch(fetchReviews(menuId)),
-  fetchNextReviewPage: () => dispatch(fetchNextReviewPage()),
-});
-export default connect(select, mapDispatchToProps)(App);
+  selectMenu,
+  receiveReviews,
+  selectReviews,
+  fetchMenus,
+  fetchReviews,
+  fetchNextReviewPage,
+})(App);

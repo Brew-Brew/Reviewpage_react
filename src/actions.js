@@ -51,10 +51,11 @@ export function nextReviews(reviews) {
     reviews,
   };
 }
-export function addPage(pagenum) {
+export function addPage(pagenum, limit = 5) {
   return {
     type: Actions.ADD_PAGES,
     pagenum,
+    limit,
   };
 }
 export function fetchReviews(menuId) {
@@ -66,6 +67,7 @@ export function fetchReviews(menuId) {
 }
 export function fetchMenus(menuType) {
   return dispatch => {
+    // dispatch(requestMenus())
     service.getMenus(menuType).then(review => {
       dispatch(receiveMenus(review.data.result));
     });
