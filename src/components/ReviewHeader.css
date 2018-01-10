@@ -21,3 +21,9 @@
 .menu-detail{
   margin:.5rem;
 }
+.styled-select{
+  color: #fff;
+  margin:.5rem;
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  background-color: #ef8e2b;
+}

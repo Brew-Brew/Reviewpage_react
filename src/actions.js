@@ -76,9 +76,10 @@ export function fetchMenus(menuType) {
 
 export function fetchNextReviewPage() {
   return (dispatch, getState) => {
-    const { reviewPage, menuId } = getState();
-    dispatch(addPage(reviewPage));
-    service.getReviews(menuId, reviewPage).then(review => {
+    const { reviewData, meta } = getState();
+    dispatch(addPage(meta.reviewPage));
+    service.getReviews(reviewData[0].menuId, meta.reviewPage).then(review => {
+      console.log(review.data.result);
       dispatch(nextReviews(review.data.result));
     });
   };

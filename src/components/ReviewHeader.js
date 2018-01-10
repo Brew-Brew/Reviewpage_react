@@ -26,8 +26,8 @@ const ReviewHeader = ({
 
       <br />
       <h3>{menuType}타입의 리뷰입니다.</h3>
-      <select
-        className="menu-detail"
+
+      <select class="styled-select"
         onChange={handleChange}
         disabled={loading}
       >
@@ -36,6 +36,7 @@ const ReviewHeader = ({
           <option value={menu.id}>{menu.shortName}</option>
         ))}
       </select>
+  
       <h3>{menuName}</h3>
     </div>
   );
