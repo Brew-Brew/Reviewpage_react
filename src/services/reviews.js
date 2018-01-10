@@ -12,6 +12,8 @@ export function getReviews(menuId, page, limit = 5) {
 
 export function getMenus(menuType) {
   return axios.get(`https://apidev.plating.co.kr/resource/v3/menus/`, {
-    menuType,
+    params: {
+      menuType,
+    },
   });
 }

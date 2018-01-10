@@ -72,8 +72,8 @@ class App extends React.Component {
 function select(state) {
   return {
     reviews: state.reviewData,
-    menuNames: state.menuNames,
-    Type: state.menuType,
+    menuNames: state.menu.menuNames,
+    Type: state.menu.menuType,
   };
 }
 

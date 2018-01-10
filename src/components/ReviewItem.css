@@ -1,4 +1,5 @@
 .review-item {
+  text-align: left;
   padding: 1rem;
   align-items: center; /* 세로 가운데 정렬 */
   cursor: pointer;

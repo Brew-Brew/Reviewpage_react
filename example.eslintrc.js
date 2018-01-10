@@ -9,8 +9,8 @@ const env = require('./config/env');
 module.exports = {
   extends: [
     "airbnb",
-    "prettier",
-    "prettier/react",
+    // "prettier",
+    // "prettier/react",
   ],
   plugins: [
     'import',
@@ -40,7 +40,7 @@ module.exports = {
     }],
 
     'import/prefer-default-export': 'off',
-    
+
   },
   env: {
     node: true,

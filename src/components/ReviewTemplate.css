@@ -21,6 +21,7 @@
 }
 
 .review-wrapper {
+  text-align: center;
   min-height: 5rem;
 }
 .next-button {
@@ -29,7 +30,6 @@
   padding-bottom: 0.5rem;
   padding-left: 15rem;
   padding-right: 15rem;
-  margin-left: 10rem;
   background: #ef8e2b;
   border-radius: 3px;
   color: white;
