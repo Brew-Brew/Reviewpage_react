@@ -1,20 +1,18 @@
 import React from 'react';
 import { menuTypes } from '../const';
 import './ReviewHeader.css';
+import Loading from './Loading'
+
 
 const ReviewHeader = ({
   menuName,
+  loading,
   menuType,
   menuNames,
   menuId,
   onClick,
   handleChange,
 }) => {
-  // console.log('test'+menuId);
-  // {menuNames}.forEach((menus)=>{
-  //   <option value= {menus.menu}>{menus.menu}</option>
-  // })
-  const loading = false;
 
   return (
     <div className="menu">
@@ -26,18 +24,17 @@ const ReviewHeader = ({
 
       <br />
       <h3>{menuType}타입의 리뷰입니다.</h3>
-
-      <select class="styled-select"
-        onChange={handleChange}
-        disabled={loading}
-      >
-        {menuNames.map(menu => (
-          // console.log('test'+menuId.id);
-          <option value={menu.id}>{menu.shortName}</option>
-        ))}
-      </select>
-  
-      <h3>{menuName}</h3>
+      {loading ?
+        <Loading/> :
+        <select class="styled-select"
+          onChange={handleChange}
+          disabled={loading}
+        >
+          {menuNames.map(menu => (
+            // console.log('test'+menuId.id);
+            <option value={menu.id}>{menu.shortName}</option>
+          ))}
+        </select>}
     </div>
   );
 };

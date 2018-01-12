@@ -9,19 +9,18 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import App from './App';
-import reviews from './reducers';
-import { selectMenu, receiveReviews } from './actions';
+import reducer from './reducers';
 
 const loggerMiddleware = createLogger();
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  reviews,
+  reducer,
   /* preloadedState, */ composeEnhancers(
     applyMiddleware(
       thunkMiddleware, // 함수를 dispatch() 하게 해줍니다
-      loggerMiddleware // 액션을 로깅하는 깔끔한 미들웨어입니다
+      loggerMiddleware, // 액션을 로깅하는 깔끔한 미들웨어입니다
     )
   )
 );

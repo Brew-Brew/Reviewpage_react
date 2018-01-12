@@ -6,13 +6,13 @@ import ReviewList from './components/ReviewList';
 import ReviewHeader from './components/ReviewHeader';
 
 import {
-  selectMenu,
   receiveReviews,
   selectReviews,
   fetchMenus,
   fetchReviews,
   fetchNextReviewPage,
-} from './actions';
+  requestReviews,
+} from './redux/action';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   handleType(menuType) {
-    this.props.selectMenu(menuType); // 버튼으로 눌러서 타입 선택
+
     this.props.fetchMenus(menuType);
     // this.props.receiveReviews(menuType);//그 타입에 맞는 리뷰들 받아옴
   }
@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, menuNames, Type, dispatch } = this.props;
+    const { reviews, loading,menuNames, Type, dispatch } = this.props;
     const { menuType, menuId, menuName } = this.state;
     const { handleType, handleChange } = this;
 
@@ -48,6 +48,7 @@ class App extends React.Component {
       <ReviewTemplate
         header={
           <ReviewHeader
+            loading={loading}
             menuName={menuName}
             menuNames={menuNames}
             menuId={menuId}
@@ -71,7 +72,8 @@ class App extends React.Component {
 
 function select(state) {
   return {
-    reviews: state.reviewData,
+    loading: state.reviewData.isFetching,
+    reviews: state.reviewData.reviews,
     menuNames: state.menu.menuNames,
     Type: state.menu.menuType,
   };
@@ -79,10 +81,10 @@ function select(state) {
 
 export default connect(select, {
   // dispatch: dispatch,
-  selectMenu,
   receiveReviews,
   selectReviews,
   fetchMenus,
   fetchReviews,
   fetchNextReviewPage,
+  requestReviews,
 })(App);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './ReviewItem.css';
-import { Select } from 'semantic-ui-react'
 
 function ReviewItem(props) {
   const { comment, rating, ratedTime } = props;
