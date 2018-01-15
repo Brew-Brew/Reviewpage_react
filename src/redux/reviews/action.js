@@ -13,16 +13,25 @@ export const Actions = {
   SELECT_REVIEWS: 'SELECT_REVIEWS',
   REQUEST_REVIEWS: 'REQUEST_REVIEWS',
   REQUEST_MENU: 'REQUEST_MENU',
+  FETCH_REVIEW: 'FETCH_REVIEW',
+  FETCH_MENU: 'FETCH_MENU',
+  FETCH_NEXT_REVIEW: 'FETCH_NEXT_REVIEW,'
 };
 
 /*
  * action creators
  */
+ export function receiveReviews(reviews) {
+   return {
+     type: Actions.RECEIVE_REVIEWS,
+     reviews,
+   };
+ }
 
-export function receiveReviews(reviews) {
+export function fetchReview(menuId) {
   return {
-    type: Actions.RECEIVE_REVIEWS,
-    reviews,
+    type: Actions.FETCH_REVIEW,
+    menuId
   };
 }
 
@@ -44,36 +53,19 @@ export function requestReviews() {
   }
 }
 export function fetchReviews(menuId) {
-  return dispatch => {
-    dispatch(requestReviews());
-    setTimeout(() => {
-    service.getReviews(menuId, 0).then(review => {
-      dispatch(pageZero());
-      dispatch(receiveReviews(review.data.result));
-    });
-  },1000);
+  return {
+    type: Actions.FETCH_REVIEW,
+    menuId
   };
 }
-export function fetchMenus(menuType) {
-  return dispatch => {
-    // dispatch(requestMenus())
-    dispatch(requestMenu(menuType));
-    setTimeout(() => {
-    service.getMenus(menuType).then(review => {
-      dispatch(pageZero());
-      dispatch(receiveMenus(review.data.result));
-    })
-  },1000);
+export function fetchNextReviews() {
+  return {
+    type: Actions.FETCH_NEXT_REVIEW,
   };
 }
 
 export function fetchNextReviewPage() {
-  return (dispatch, getState) => {
-    const { reviewData, meta } = getState();
-    dispatch(addPage(meta.reviewPage));
-    service.getReviews(reviewData.reviews[0].menuId, meta.reviewPage+5).then(review => {
-      console.log(review.data.result);
-      dispatch(nextReviews(review.data.result));
-    });
+  return {
+    type: Actions.FETCH_NEXT_REVIEW,
   };
 }
