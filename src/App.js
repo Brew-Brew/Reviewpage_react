@@ -1,9 +1,12 @@
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import React, { Component } from 'react';
+import { Switch, Route, withRouter,Link } from 'react-router-dom';
+
 import ReviewTemplate from './components/ReviewTemplate';
 import ReviewList from './components/ReviewList';
 import ReviewHeader from './components/ReviewHeader';
+import routes from './routes';
 
 import {
   receiveReviews,
@@ -26,6 +29,10 @@ class App extends React.Component {
     this.handleType = this.handleType.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+  componentWillMount(){
+      this.props.fetchReviews(this.props.match.params.menuId);
+  }
+
 
   handleType(menuType) {
 
@@ -40,32 +47,36 @@ class App extends React.Component {
   }
 
   render() {
+    //this.props.fetchReviews(this.props.match.params.menuId);
     const { reviews, loading,menuNames, Type, dispatch } = this.props;
     const { menuType, menuId, menuName } = this.state;
     const { handleType, handleChange } = this;
+    const linkTo = `/menus/${this.props.match.params.menuId}`;
 
     return (
-      <ReviewTemplate
-        header={
-          <ReviewHeader
-            loading={loading}
-            menuName={menuName}
-            menuNames={menuNames}
-            menuId={menuId}
-            menuType={Type}
-            onClick={handleType}
-            handleChange={handleChange}
-          />
-        }
-      >
-        <ReviewList reviews={reviews} />
-        <button
-          className="next-button"
-          onClick={() => this.props.fetchNextReviewPage()}
+
+        <ReviewTemplate
+          header={
+            <ReviewHeader
+              loading={loading}
+              menuName={menuName}
+              menuNames={menuNames}
+              menuId={menuId}
+              menuType={Type}
+              onClick={handleType}
+              handleChange={handleChange}
+            />
+          }
         >
-          다음 리뷰 보기
-        </button>
-      </ReviewTemplate>
+          <ReviewList reviews={reviews} />
+
+          <button
+            className="next-button"
+            onClick={() => this.props.fetchNextReviewPage()}
+          >다음 리뷰 보기
+          </button>
+
+        </ReviewTemplate>
     );
   }
 }
@@ -79,7 +90,7 @@ function select(state) {
   };
 }
 
-export default connect(select, {
+export default withRouter(connect(select, {
   // dispatch: dispatch,
   receiveReviews,
   selectReviews,
@@ -87,4 +98,4 @@ export default connect(select, {
   fetchReviews,
   fetchNextReviewPage,
   requestReviews,
-})(App);
+})(App));

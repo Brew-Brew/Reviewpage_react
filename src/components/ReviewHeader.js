@@ -2,7 +2,7 @@ import React from 'react';
 import { menuTypes } from '../const';
 import './ReviewHeader.css';
 import Loading from './Loading'
-
+import Modal from './modal/index'
 
 const ReviewHeader = ({
   menuName,
@@ -23,6 +23,7 @@ const ReviewHeader = ({
       ))}
 
       <br />
+
       <h3>{menuType}타입의 리뷰입니다.</h3>
         <select class="styled-select"
           onChange={handleChange}
@@ -35,7 +36,7 @@ const ReviewHeader = ({
         </select>
 
     {loading &&  <Loading/> }
-
+    <Modal />
     </div>
   );
 };

@@ -16,13 +16,19 @@
   opacity: 1;
 }
 
-/* todo-item 사이에 윗 테두리 */
 .review-item {
   border-top: 1px solid #f1f3f5;
 }
 .review-detail{
   padding: 1rem 1rem;
+  text-align: center;
 }
 .review-bottom{
   padding-left: 1rem;
+  text-align: center;
+}
+.review-title{
+  font-size: 130%;
+  text-align: center;
+  color: #ef8e2b;
 }

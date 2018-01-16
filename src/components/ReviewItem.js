@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import './ReviewItem.css';
 
 function ReviewItem(props) {
-  const { comment, rating, ratedTime } = props;
+  const { comment, rating, ratedTime, menu} = props;
 
   return (
     <div className="review-item">
+      <div className="review-title">
+        {menu.shortName}
+      </div>
       <div className="review-detail">
         {' '}
         <strong>{comment}</strong>
@@ -18,6 +21,7 @@ function ReviewItem(props) {
         <strong>리뷰시간:</strong>
         {ratedTime}
       </div>
+
       <div>
 
       </div>
