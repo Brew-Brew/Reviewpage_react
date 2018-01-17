@@ -25,35 +25,37 @@ class App extends React.Component {
       menuName: '',
       menuType: '',
       menuId: '',
+      redirect: null,
     };
 
     this.handleType = this.handleType.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   componentWillMount(){
-      this.props.fetchMenus(this.props.match.params.menuType);
       this.props.fetchReviews(this.props.match.params.menuId);
   }
 
 
   handleType(menuType) {
-    //const linkTo = `/${menuType}/${this.props.match.params.menuId}`;
-    //return <Redirect to="/"/>
+    this.setState({redirect: null}) ;
     this.props.fetchMenus(menuType);
   }
 
   handleChange(menuId) {
-    this.state.menuName = menuId.shortName;
-    // this.props.fetchPosts(menuId.target.value);
+    const address= "/" + menuId.target.value.toString();
+  //  this.setState({redirect: address}) ;
+  this.props.history.push(address);
     this.props.fetchReviews(menuId.target.value); // 음식에 맞는 리뷰 가져옴
   }
 
   render() {
-    //this.props.fetchReviews(this.props.match.params.menuId);
-    const { reviews, loading,menuNames, Type, dispatch, reviewPage, end } = this.props;
-    const { menuType, menuId, menuName } = this.state;
+    const { reviews, loading,menuNames, Type, dispatch, reviewPage, end, menuId, } = this.props;
+    const { menuType,  menuName, redirect } = this.state;
     const { handleType, handleChange } = this;
-    const linkTo = `/menus/${this.props.match.params.menuId}`;
+
+    // if (redirect) {
+    //    return <Redirect to={redirect}/>;
+    //  }
 
     return (
 
@@ -67,10 +69,12 @@ class App extends React.Component {
               menuType={Type}
               onClick={handleType}
               handleChange={handleChange}
+              selectedMenu={menuId}
             />
           }
         >
-          <ReviewList reviews={reviews}/>
+
+          <ReviewList reviews={reviews} redirect={redirect}/>
 
           { (!loading && (reviews[0]!==undefined)) &&
           ( end || <button
@@ -96,6 +100,7 @@ function select(state) {
     Type: state.menu.menuType,
     reviewPage: state.meta.reviewPage,
     end: state.reviewData.isEnd,
+    menuId: state.menu.menuId,
   };
 }
 

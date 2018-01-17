@@ -1,16 +1,11 @@
 import React from 'react';
-import App from './App';
+import ReviewList from './ReviewList';
 
 const routes = [
   {
-    path: '/',
-    exact: true,
-    component: App,
-  },
-  {
     path: '/:menuId',
     exact: true,
-    component: App,
+    component: ReviewList,
   },
 ];
 

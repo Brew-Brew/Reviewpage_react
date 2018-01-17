@@ -1,20 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { menuTypes } from '../const';
 import './ReviewHeader.css';
 import Loading from './Loading'
 import Modal from './modal/index'
+
 
 const ReviewHeader = ({
   menuName,
   loading,
   menuType,
   menuNames,
-  menuId,
   onClick,
   handleChange,
+  selectedMenu,
 }) => {
-
   return (
+
     <div className="menu">
       {menuTypes.map(type => (
         <button className="menu-button" onClick={() => onClick(type)}>
@@ -28,11 +31,13 @@ const ReviewHeader = ({
         <select class="styled-select"
           onChange={handleChange}
           disabled={loading}
+          value={selectedMenu}
         >
-          {menuNames.map(menu => (
-            // console.log('test'+menuId.id);
-            <option value={menu.id}>{menu.shortName}</option>
-          ))}
+            <option value="" >Please Select</option>
+            {menuNames.map(menu => (
+              // console.log('test'+menuId.id);
+              <option value={menu.id}> {menu.shortName}</option>
+            ))}
         </select>
 
     {loading &&  <Loading/> }
