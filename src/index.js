@@ -36,13 +36,13 @@ const store = createStore(
 );
 sagaMiddleware.run(rootSaga);
 
-console.log(routes);
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
         {routes.map(({ ...routeProps }) => {
+          console.log(routeProps);
             return <Route {...routeProps} key={routeProps.path || ''} />
         })}
       </Switch>

@@ -1,12 +1,13 @@
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import React, { Component } from 'react';
-import { Switch, Route, withRouter,Link } from 'react-router-dom';
+import { Switch, Route, withRouter,Link,Redirect } from 'react-router-dom';
 
 import ReviewTemplate from './components/ReviewTemplate';
 import ReviewList from './components/ReviewList';
 import ReviewHeader from './components/ReviewHeader';
 import routes from './routes';
+import Loading from './components/Loading'
 
 import {
   receiveReviews,
@@ -30,14 +31,15 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   componentWillMount(){
+      this.props.fetchMenus(this.props.match.params.menuType);
       this.props.fetchReviews(this.props.match.params.menuId);
   }
 
 
   handleType(menuType) {
-
+    //const linkTo = `/${menuType}/${this.props.match.params.menuId}`;
+    //return <Redirect to="/"/>
     this.props.fetchMenus(menuType);
-    // this.props.receiveReviews(menuType);//그 타입에 맞는 리뷰들 받아옴
   }
 
   handleChange(menuId) {
@@ -48,7 +50,7 @@ class App extends React.Component {
 
   render() {
     //this.props.fetchReviews(this.props.match.params.menuId);
-    const { reviews, loading,menuNames, Type, dispatch } = this.props;
+    const { reviews, loading,menuNames, Type, dispatch, reviewPage, end } = this.props;
     const { menuType, menuId, menuName } = this.state;
     const { handleType, handleChange } = this;
     const linkTo = `/menus/${this.props.match.params.menuId}`;
@@ -68,13 +70,18 @@ class App extends React.Component {
             />
           }
         >
-          <ReviewList reviews={reviews} />
+          <ReviewList reviews={reviews}/>
 
-          <button
-            className="next-button"
-            onClick={() => this.props.fetchNextReviewPage()}
-          >다음 리뷰 보기
-          </button>
+          { (!loading && (reviews[0]!==undefined)) &&
+          ( end || <button
+              className="next-button"
+              onClick={() => this.props.fetchNextReviewPage()}
+            >다음 리뷰 보기
+          </button>) }
+
+            {loading&&(reviews[0]!==undefined) && <Loading/ >}
+            {end && '더 이상 리뷰가 존재하지 않습니다!'}
+
 
         </ReviewTemplate>
     );
@@ -87,6 +94,8 @@ function select(state) {
     reviews: state.reviewData.reviews,
     menuNames: state.menu.menuNames,
     Type: state.menu.menuType,
+    reviewPage: state.meta.reviewPage,
+    end: state.reviewData.isEnd,
   };
 }
 

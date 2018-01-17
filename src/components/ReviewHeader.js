@@ -36,7 +36,6 @@ const ReviewHeader = ({
         </select>
 
     {loading &&  <Loading/> }
-    <Modal />
     </div>
   );
 };

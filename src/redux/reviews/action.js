@@ -15,7 +15,9 @@ export const Actions = {
   REQUEST_MENU: 'REQUEST_MENU',
   FETCH_REVIEW: 'FETCH_REVIEW',
   FETCH_MENU: 'FETCH_MENU',
-  FETCH_NEXT_REVIEW: 'FETCH_NEXT_REVIEW,'
+  FETCH_NEXT_REVIEW: 'FETCH_NEXT_REVIEW',
+  REQUEST_NEXT_REVIEWS: 'REQUEST_NEXT_REVIEWS',
+  IS_END: 'IS_END',
 };
 
 /*
@@ -52,6 +54,11 @@ export function requestReviews() {
     type: Actions.REQUEST_REVIEWS,
   }
 }
+export function requestNextReviews() {
+  return {
+    type: Actions.REQUEST_NEXT_REVIEWS,
+  }
+}
 export function fetchReviews(menuId) {
   return {
     type: Actions.FETCH_REVIEW,
@@ -67,5 +74,11 @@ export function fetchNextReviews() {
 export function fetchNextReviewPage() {
   return {
     type: Actions.FETCH_NEXT_REVIEW,
+  };
+}
+
+export function isEnd() {
+  return {
+    type: Actions.IS_END,
   };
 }
