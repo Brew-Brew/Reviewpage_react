@@ -17,11 +17,11 @@ export function* loadMenus(actions) {
   try {
     yield call(delay, 1000);
     const review = yield call(service.getMenus,menuType);
-    const menuId = review.data.result[0].id;
-    yield put(setMenuId(menuId));
+    //yield put(setMenuId(menuId));
     yield put(pageZero());
     yield put(receiveMenus(review.data.result));
-    yield put(fetchReviews(menuId));
+    yield put(fetchReviews(undefined,menuType));
+    //Yiled put(fetchReviews(menuType))
     /*
     const firstReview = yield call(service.getReviews,menuId,0);
     yield put(receiveReviews(firstReview.data.result));

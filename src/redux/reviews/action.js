@@ -59,18 +59,20 @@ export function requestNextReviews() {
     type: Actions.REQUEST_NEXT_REVIEWS,
   }
 }
-export function fetchReviews(menuId) {
+export function fetchReviews(menuId,menuType) {
   return {
     type: Actions.FETCH_REVIEW,
-    menuId
+    menuId,
+    menuType,
   };
 }
 
 
-export function fetchNextReviewPage(menuId) {
+export function fetchNextReviewPage(menuId,menuType) {
   return {
     type: Actions.FETCH_NEXT_REVIEW,
-    menuId
+    menuId,
+    menuType,
   };
 }
 

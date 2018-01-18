@@ -8,7 +8,7 @@ const {
 
 const menu= (
   state = {
-    menuType: 'MAIN',
+    menuType: undefined,
     menuId: '',
     menuName: '',
     menuNames: [],
