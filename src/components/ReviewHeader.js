@@ -8,7 +8,6 @@ import Modal from './modal/index'
 
 
 const ReviewHeader = ({
-  menuName,
   loading,
   menuType,
   menuNames,

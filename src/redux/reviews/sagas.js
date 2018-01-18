@@ -15,8 +15,6 @@ const {
 
 export function* loadReviews(actions) {
   const { menuId, menuType } = actions;
-  console.log(menuId);
-  console.log(menuType);
   if(menuId){
     yield put(setMenuId(menuId));
   }
@@ -38,8 +36,6 @@ export function* loadReviews(actions) {
 
 export function* loadNextReviews(actions) {
   const { menuId, menuType } = actions;
-  console.log(menuType);
-  console.log
   yield put(requestNextReviews());
   try {
     yield call(delay, 1000);

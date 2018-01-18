@@ -22,9 +22,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuName: '',
-      menuType: '',
-      menuId: '',
       redirect: null,
     };
 
@@ -50,7 +47,6 @@ class App extends React.Component {
 
   render() {
     const { reviews, loading, menuNames, Type, dispatch, reviewPage, end, menuId, } = this.props;
-    const { menuType,  menuName, redirect } = this.state;
     const { handleType, handleChange } = this;
 
     // if (redirect) {
@@ -63,7 +59,6 @@ class App extends React.Component {
           header={
             <ReviewHeader
               loading={loading}
-              menuName={menuName}
               menuNames={menuNames}
               menuId={menuId}
               menuType={Type}
@@ -74,16 +69,16 @@ class App extends React.Component {
           }
         >
 
-          <ReviewList reviews={reviews} redirect={redirect}/>
+          <ReviewList reviews={reviews} />
 
-          { (!loading && (reviews[0]!==undefined)) &&
-          ( end || <button
+          {(!loading && (reviews[0]!==undefined)) &&
+          (end || <button
               className="next-button"
               onClick={() => this.props.fetchNextReviewPage(this.props.menuId, this.props.Type)}
             >다음 리뷰 보기
           </button>) }
 
-            {loading&&(reviews[0]!==undefined) && <Loading/ >}
+            {loading &&(reviews[0]!==undefined) && <Loading/ >}
             {end && '더 이상 리뷰가 존재하지 않습니다!'}
 
 
