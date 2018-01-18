@@ -34,13 +34,22 @@ export function* loadReviews(actions) {
 
 
 export function* loadNextReviews(actions) {
+  const { menuId } = actions;
   yield put(requestNextReviews());
   try {
     yield call(delay, 1000);
     const state = yield select();
     yield put(addPage(state.meta.reviewPage));
-    const review = yield call(service.getReviews, state.reviewData.reviews[0].menuId, state.meta.reviewPage+5);
-    yield put(nextReviews(review.data.result));
+
+    if(menuId.length>0){
+      const review = yield call(service.getReviews, state.reviewData.reviews[0].menuId, state.meta.reviewPage+5);
+      yield put(nextReviews(review.data.result));
+    }
+    else{
+      const review = yield call(service.getReviews,menuId,state.meta.reviewPage+5);
+      yield put(nextReviews(review.data.result));
+    }
+
   } catch (error) {
 
   }

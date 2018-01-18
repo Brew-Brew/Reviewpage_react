@@ -79,7 +79,7 @@ class App extends React.Component {
           { (!loading && (reviews[0]!==undefined)) &&
           ( end || <button
               className="next-button"
-              onClick={() => this.props.fetchNextReviewPage()}
+              onClick={() => this.props.fetchNextReviewPage(this.props.menuNames)}
             >다음 리뷰 보기
           </button>) }
 

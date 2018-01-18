@@ -65,15 +65,12 @@ export function fetchReviews(menuId) {
     menuId
   };
 }
-export function fetchNextReviews() {
-  return {
-    type: Actions.FETCH_NEXT_REVIEW,
-  };
-}
 
-export function fetchNextReviewPage() {
+
+export function fetchNextReviewPage(menuId) {
   return {
     type: Actions.FETCH_NEXT_REVIEW,
+    menuId
   };
 }
 
