@@ -44,7 +44,7 @@ class App extends React.Component {
   handleChange(menuId) {
     const address= "/" + menuId.target.value.toString();
   //  this.setState({redirect: address}) ;
-  this.props.history.push(address);
+    this.props.history.push(address);
     this.props.fetchReviews(menuId.target.value); // 음식에 맞는 리뷰 가져옴
   }
 
