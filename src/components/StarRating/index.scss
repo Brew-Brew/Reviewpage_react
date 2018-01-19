@@ -1,0 +1,19 @@
+@import "src/scss/variables";
+
+.StarRating {
+  border: none;
+  float: left;
+  span {
+    float: right;
+    &:hover {
+      svg {
+        color: $color-star !important;
+      }
+      & ~ span {
+        svg {
+          color: $color-star !important;
+        }
+      }
+    }
+  }
+}

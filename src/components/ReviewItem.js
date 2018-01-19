@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import './ReviewItem.css';
+import classnames from 'classnames/bind';
+
+import css from './ReviewItem.css';
+import StarRating from './StarRating'
+const cx = classnames.bind(css);
 
 function ReviewItem(props) {
   const { comment, rating, ratedTime, menu} = props;
@@ -15,8 +19,12 @@ function ReviewItem(props) {
       </div>
       <div className="review-bottom">
         {' '}
-        <strong>별점:</strong>
-        {rating}
+        <StarRating
+          className={cx(`MenuDetail-review-StarRating`)}
+          rating={rating}
+          color='#ef8e2b'
+          size="1.2rem"
+                        />
         {' '}
         <strong>리뷰시간:</strong>
         {ratedTime}
