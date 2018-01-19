@@ -1,0 +1,36 @@
+.review-template {
+  background: white;
+  width: 80%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */
+  margin: 0 auto; /* 페이지 중앙 정렬 */
+  margin-top: 4rem;
+}
+
+.title {
+  padding: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 100;
+  background: #ef8e2b;
+  color: white;
+}
+
+.menu-wrapper {
+  padding: 1rem;
+  border-bottom: 1px solid #ef8e2b;
+}
+
+.review-wrapper {
+  text-align: center;
+  min-height: 5rem;
+}
+.next-button {
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background: #ef8e2b;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}

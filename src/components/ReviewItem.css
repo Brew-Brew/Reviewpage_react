@@ -1,0 +1,34 @@
+.review-item {
+  text-align: left;
+  padding: 1rem;
+  align-items: center; /* 세로 가운데 정렬 */
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.review-item:hover {
+  background: #f7d9bb;
+}
+
+/* todo-item 에 마우스가 있을때만 .remove 보이기 */
+.review-item:hover .remove {
+  opacity: 1;
+}
+
+.review-item {
+  border-top: 1px solid #f1f3f5;
+}
+.review-detail{
+  padding: 1rem 1rem;
+  text-align: center;
+}
+.review-bottom{
+  padding-left: 1rem;
+  text-align: center;
+}
+.review-title{
+  font-size: 130%;
+  text-align: center;
+  color: #ef8e2b;
+}

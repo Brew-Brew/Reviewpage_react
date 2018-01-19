@@ -1,0 +1,29 @@
+.menu-button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 1rem;
+  background: #ef8e2b;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.menu-button:hover {
+  background: #f7d9bb;
+  color:black;
+}
+.menu{
+    text-align: center;
+    color: #ef8e2b;
+}
+.menu-detail{
+  margin:.5rem;
+}
+.styled-select{
+  color: #fff;
+  margin:.5rem;
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  background-color: #ef8e2b;
+}
