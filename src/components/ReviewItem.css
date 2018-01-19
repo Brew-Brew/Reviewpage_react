@@ -20,15 +20,16 @@
   border-top: 1px solid #f1f3f5;
 }
 .review-detail{
-  padding: 1rem 3rem;
-  text-align: center;
+  padding: .2rem 1rem;
+  text-align: left;
 }
 .review-bottom{
   padding-left: 1rem;
-  text-align: center;
+  text-align: left;
 }
 .review-title{
+  padding: 1.5rem 1rem;
   font-size: 130%;
-  text-align: center;
+  text-align: left;
   color: #ef8e2b;
 }
