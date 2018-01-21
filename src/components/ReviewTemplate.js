@@ -3,7 +3,9 @@ import './ReviewTemplate.css';
 
 const ReviewTemplate = ({ header, select, children }) => (
   <main className="review-template">
-    <div className="title">PLATING 리뷰 페이지</div>
+    <div className="title">
+      <img  class="logo" src="https://cloud.plating.co.kr/images/logos/230x78-white.png" /><br/>
+      <strong>Review Page</strong></div>
 
     <section className="menu-wrapper">
       {header}

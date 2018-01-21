@@ -7,19 +7,19 @@ import Loading from './Loading'
 import Modal from './modal/index'
 
 
-const ReviewHeader = ({
-  loading,
+const ReviewSelecter = ({
+  menuLoading,
   menuType,
   menuNames,
-  onClick,
-  handleChange,
+  onMenuTypeClick,
+  onMenuChange,
   selectedMenu,
 }) => {
   return (
 
     <div className="menu">
       {menuTypes.map(type => (
-        <button className="menu-button" onClick={() => onClick(type)}>
+        <button className="menu-button" onClick={() => onMenuTypeClick(type)}>
           {type}
         </button>
       ))}
@@ -28,8 +28,8 @@ const ReviewHeader = ({
 
       <h3>{menuType}타입의 리뷰입니다.</h3>
         <select class="styled-select"
-          onChange={handleChange}
-          disabled={loading}
+          onChange={onMenuChange}
+          disabled={menuLoading}
           value={selectedMenu}
         >
             <option value="" >Please Select</option>
@@ -39,9 +39,9 @@ const ReviewHeader = ({
             ))}
         </select>
 
-    {loading &&  <Loading/> }
+    {menuLoading &&  <Loading/> }
     </div>
   );
 };
 
-export default ReviewHeader;
+export default ReviewSelecter;

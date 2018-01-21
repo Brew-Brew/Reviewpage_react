@@ -34,3 +34,10 @@
   font-weight: 600;
   cursor: pointer;
 }
+.logo{
+width: 100px;
+background-repeat: no-repeat;
+background-position: center;
+color: transparent;
+background-size: 5rem auto;
+}

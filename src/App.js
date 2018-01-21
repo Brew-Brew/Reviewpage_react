@@ -5,7 +5,7 @@ import { Switch, Route, withRouter,Link,Redirect } from 'react-router-dom';
 
 import ReviewTemplate from './components/ReviewTemplate';
 import ReviewList from './components/ReviewList';
-import ReviewHeader from './components/ReviewHeader';
+import ReviewSelecter from './components/ReviewSelecter';
 import routes from './routes';
 import Loading from './components/Loading'
 
@@ -46,24 +46,21 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, loading, menuNames, Type, dispatch, reviewPage, end, menuId, } = this.props;
+    const { reviews, loading, menuNames, menuType, end, menuId, } = this.props;
     const { handleType, handleChange } = this;
 
-    // if (redirect) {
-    //    return <Redirect to={redirect}/>;
-    //  }
 
     return (
 
         <ReviewTemplate
           header={
-            <ReviewHeader
-              loading={loading}
+            <ReviewSelecter
+              menuLoading={loading}
               menuNames={menuNames}
               menuId={menuId}
-              menuType={Type}
-              onClick={handleType}
-              handleChange={handleChange}
+              menuType={menuType}
+              onMenuTypeClick={handleType}
+              onMenuChange={handleChange}
               selectedMenu={menuId}
             />
           }
@@ -92,7 +89,7 @@ function select(state) {
     loading: state.reviewData.isFetching,
     reviews: state.reviewData.reviews,
     menuNames: state.menu.menuNames,
-    Type: state.menu.menuType,
+    menuType: state.menu.menuType,
     reviewPage: state.meta.reviewPage,
     end: state.reviewData.isEnd,
     menuId: state.menu.menuId,
