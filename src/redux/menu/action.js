@@ -3,19 +3,25 @@
  */
 
 export const Actions = {
-  REQUEST_MENU: 'REQUEST_MENU',
+  REQUEST_MENUS: 'REQUEST_MENUS',
   RECEIVE_MENUS: 'RECEIVE_MENUS',
-  FETCH_MENU: 'FETCH_MENU',
+  LOAD_MENU: 'LOAD_MENU',
   SET_MENU_ID: 'SET_MENU_ID',
 };
 
 /*
  * action creators
  */
+ export function loadMenus(menuType) {
+   return {
+     type: Actions.LOAD_MENU,
+     menuType
+   };
+ }
 
-export function requestMenu(menuType) {
+export function loadMenusRequest(menuType) {
   return {
-    type: Actions.REQUEST_MENU,
+    type: Actions.REQUEST_MENUS,
     menuType,
   };
 }
@@ -27,12 +33,7 @@ export function receiveMenus(menus) {
   };
 }
 
-export function fetchMenus(menuType) {
-  return {
-    type: Actions.FETCH_MENU,
-    menuType
-  };
-}
+
 
 export function setMenuId(menuId) {
   return {

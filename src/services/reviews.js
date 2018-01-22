@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export function getReviews(menuId, menuType, page, limit = 5) {
-  return axios.get(`https://apialpha.plating.co.kr/resource/v3/reviews/`, {
+const apiUrl = process.env.PLATING_API_URL;
+console.log(apiUrl);
+export function getReviews({menuId, menuType}, page, limit = 5) {
+  return axios.get(apiUrl+`/resource/v3/reviews/`, {
     params: {
       menuId,
       menuType,
@@ -12,7 +14,7 @@ export function getReviews(menuId, menuType, page, limit = 5) {
 }
 
 export function getMenus(menuType) {
-  return axios.get(`https://apialpha.plating.co.kr/resource/v3/menus/`, {
+  return axios.get(apiUrl+`/resource/v3/menus/`, {
     params: {
       menuType,
     },

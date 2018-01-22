@@ -1,7 +1,7 @@
 import { Actions } from './action';
 
 const {
-  ADD_PAGES,
+  SET_PAGE,
   PAGE_ZERO
 } = Actions;
 
@@ -12,9 +12,9 @@ const meta = (
   action
 ) => {
   switch (action.type) {
-    case ADD_PAGES:
+    case SET_PAGE:
       return Object.assign({}, state, {
-        reviewPage: action.pagenum + action.limit,
+        reviewPage: action.offset + action.limit,
       });
     case PAGE_ZERO:
       return Object.assign({}, state, {

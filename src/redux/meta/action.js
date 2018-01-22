@@ -3,7 +3,7 @@
  */
 
 export const Actions = {
-  ADD_PAGES: 'ADD_PAGES',
+  SET_PAGE: 'SET_PAGE',
   PAGE_ZERO: 'PAGE_ZERO',
 };
 
@@ -11,10 +11,10 @@ export const Actions = {
  * action creators
  */
 
-export function addPage(pagenum, limit = 5) {
+export function setPage(offset, limit = 5) {
   return {
-    type: Actions.ADD_PAGES,
-    pagenum,
+    type: Actions.SET_PAGE,
+    offset,
     limit,
   };
 }

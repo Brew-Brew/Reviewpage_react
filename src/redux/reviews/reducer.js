@@ -1,12 +1,15 @@
 import { Actions } from './action';
 
 const {
-  RECEIVE_REVIEWS,
+  REQUEST_MENUS,
   RECEIVE_MENUS,
-  NEXT_REVIEWS,
-  REQUEST_MENU,
+
   REQUEST_REVIEWS,
+  RECEIVE_REVIEWS,
+
   REQUEST_NEXT_REVIEWS,
+  RECEIVE_NEXT_REVIEWS,
+
   IS_END,
 } = Actions;
 
@@ -16,7 +19,9 @@ const reviewData = (state = {
   reviews: []
 }, action) => {
   switch (action.type) {
-    case REQUEST_MENU:
+
+    //메뉴관련
+    case REQUEST_MENUS:
       return Object.assign({}, state, {
         isFetching: true,
         reviews: [],
@@ -28,25 +33,32 @@ const reviewData = (state = {
         reviews: [],
         isEnd: false,
       });
+
+    //리뷰관련
     case REQUEST_REVIEWS:
-      return Object.assign({}, state, {
-        isFetching: true,
-      });
-    case REQUEST_NEXT_REVIEWS:
       return Object.assign({}, state, {
         isFetching: true,
       });
     case RECEIVE_REVIEWS:
       return Object.assign({}, state, {
-        isFetching: false,
-        isEnd: false,
-        reviews: [...action.reviews]
+          isFetching: false,
+          isEnd: false,
+          reviews: [...action.reviews]
       });
-    case NEXT_REVIEWS:
+
+    //next 리뷰관련
+    case REQUEST_NEXT_REVIEWS:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+
+    case RECEIVE_NEXT_REVIEWS:
       return Object.assign({}, state, {
         isFetching: false,
         reviews: [...state.reviews, ...action.reviews],
       });
+      
+    //끝 표시
     case IS_END:
       return Object.assign({}, state, {
         isEnd: true,

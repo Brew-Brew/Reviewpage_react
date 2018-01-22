@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { menuTypes } from '../const';
-import './ReviewHeader.css';
+import './ReviewSelecter.css';
 import Loading from './Loading'
-import Modal from './modal/index'
 
 
 const ReviewSelecter = ({
@@ -34,7 +32,6 @@ const ReviewSelecter = ({
         >
             <option value="" >Please Select</option>
             {menuNames.map(menu => (
-              // console.log('test'+menuId.id);
               <option value={menu.id}> {menu.shortName}</option>
             ))}
         </select>
