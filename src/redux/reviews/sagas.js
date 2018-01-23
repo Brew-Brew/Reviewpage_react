@@ -25,7 +25,7 @@ export function* loadReviews(actions) {
   try {
     yield call(delay, 1000);
     const review = yield call(service.getReviews,{menuId,menuType},0);
-
+    console.log(review.data)
     yield put(pageZero());
     yield put(receiveReviews(review.data.result));
     if(review.data.next === undefined){
@@ -46,10 +46,12 @@ export function* loadNextReviews(actions) {
     const state = yield select();
     const nextPage = state.meta.reviewPage
     yield put(setPage(nextPage));
-    
+
     const review = yield call(service.getReviews, {menuId, menuType}, state.meta.reviewPage+5);
     yield put(receiveNextReviews(review.data.result));
-
+    if(review.data.next === undefined){
+      yield put(isEnd());
+    }
 
   } catch (error) {
 

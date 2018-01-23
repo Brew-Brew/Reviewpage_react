@@ -6,7 +6,6 @@ import ReviewItem from './ReviewItem';
 
 function ReviewList(props) {
   const { reviews, redirect } = props;
-
   const reviewList = reviews.map(({ comment, rating, ratedTime, menu}) => (
 
     <ReviewItem comment={comment} rating={rating} ratedTime={moment(new Date(ratedTime)).format('YYYY년 MM월 DD일 HH:mm')} menu={menu}/>

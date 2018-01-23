@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router'
 
 import ReviewTemplate from './components/ReviewTemplate';
 import ReviewList from './components/ReviewList';
@@ -45,7 +46,6 @@ class App extends React.Component {
   render() {
     const { reviews, loading, menuNames, menuType, end, menuId, } = this.props;
     const { handleType, handleChange } = this;
-
 
     return (
 
